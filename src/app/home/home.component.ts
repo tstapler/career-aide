@@ -7,6 +7,10 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
+import { resume_schema } from './../resume_schema';
+
+import { FrameworkLibraryService } from 'angular2-json-schema-form';
+
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
@@ -24,11 +28,17 @@ import { XLargeDirective } from './x-large';
 export class HomeComponent implements OnInit {
   // Set our default values
   public localState = { value: '' };
+  public mySchema = resume_schema;
+  public appLayout = {
+  };
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
-    public title: Title
-  ) {}
+    public title: Title,
+    private frameworkLibrary: FrameworkLibraryService
+  ) {
+    frameworkLibrary.setFramework('bootstrap-3', true);
+  }
 
   public ngOnInit() {
     console.log('hello `Home` component');
@@ -39,5 +49,17 @@ export class HomeComponent implements OnInit {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
+  }
+
+  public submitThing(val) {
+    console.log(val);
+  }
+
+  public showFormSchemaFn(evnt) {
+    console.log(evnt);
+  }
+
+  public showFormLayoutFn(evnt) {
+    console.log(evnt);
   }
 }

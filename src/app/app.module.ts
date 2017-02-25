@@ -15,6 +15,8 @@ import {
   PreloadAllModules
 } from '@angular/router';
 
+import { JsonSchemaFormModule } from 'angular2-json-schema-form';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -29,6 +31,8 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
+import'jquery/dist/jquery.min.js';
+import'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
@@ -60,11 +64,12 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    JsonSchemaFormModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
   ]
 })
 export class AppModule {
