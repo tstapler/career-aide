@@ -4,7 +4,7 @@
   <div class="container">
 
     <div class="col-xs-6 col-xs-offset-3">
-      <json-schema-form [schema]="mySchema" [loadExternalAssets]="true"(onSubmit)="submitThing($event)" [debug]="true" (formSchema)="showFormSchemaFn($event)" (formLayout)="showFormLayoutFn($event)"></json-schema-form>
+      <json-schema-form [schema]="mySchema" [layout]="appLayout" [loadExternalAssets]="true"(onSubmit)="submitThing($event)" [debug]="true" (formSchema)="showFormSchemaFn($event)" (formLayout)="showFormLayoutFn($event)"></json-schema-form>
     </div>
 
   </div>

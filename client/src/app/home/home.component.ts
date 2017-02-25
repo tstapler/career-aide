@@ -7,7 +7,8 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
-import { resume_schema } from './../resume_schema';
+import { resumeSchema } from './../resume_schema';
+import { resumeLayout } from './../resume_form_layout';
 
 import { FrameworkLibraryService } from 'angular2-json-schema-form';
 
@@ -28,9 +29,8 @@ import { FrameworkLibraryService } from 'angular2-json-schema-form';
 export class HomeComponent implements OnInit {
   // Set our default values
   public localState = { value: '' };
-  public mySchema = resume_schema;
-  public appLayout = {
-  };
+  public mySchema = resumeSchema;
+  public appLayout = resumeLayout;
   // TypeScript public modifiers
   constructor(
     public appState: AppState,

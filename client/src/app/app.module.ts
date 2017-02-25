@@ -31,7 +31,6 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
-import'jquery/dist/jquery.min.js';
 import'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/styles.scss';
 import '../styles/headings.css';

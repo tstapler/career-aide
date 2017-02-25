@@ -386,7 +386,7 @@
             "type": "string",
             "description": "e.g. The World Wide Web"
           },
-           "description": {
+          "description": {
             "type": "string",
             "description": "Short summary of project. e.g. Collated works of 2017."
           },
@@ -420,24 +420,24 @@
           },
           "url": {
             "type": "string",
-            "format":"uri",
+            "format": "uri",
             "description": "e.g. http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html"
           },
-          "roles":{
-            "type":"array",
+          "roles": {
+            "type": "array",
             "description": "Specify your role on this project or in company",
             "additionalItems": false,
             "items": {
-              "type":"string",
+              "type": "string",
               "description": "e.g. Team Lead, Speaker, Writer"
             }
           },
-          "entity":{
+          "entity": {
             "type": "string",
             "description": "Specify the relevant company/entity affiliations e.g. 'greenpeace', 'corporationXYZ'"
           },
-          "type":{
-            "type":"string",
+          "type": {
+            "type": "string",
             "description": " e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'"
           }
         }
