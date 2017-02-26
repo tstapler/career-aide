@@ -35,7 +35,7 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services';
+import { AlertService, AuthenticationService, ResumeService, UserService } from './_services';
 import { AlertComponent } from './_directives';
 
 import '../styles/styles.scss';
@@ -82,8 +82,9 @@ type StoreType = {
     AlertService,
     AuthGuard,
     AuthenticationService,
+    BaseRequestOptions,
+    ResumeService,
     UserService,
-    BaseRequestOptions
   ]
 })
 export class AppModule {

@@ -2,8 +2,10 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AppState } from '../app.service';
+import { AuthenticationService } from '../_services';
 
 @Component({
   selector: 'login',
@@ -12,11 +14,13 @@ import { AppState } from '../app.service';
 })
 export class LoginComponent implements OnInit {
   // Set our default values
-  public localState = { value: '' };
+  public localState: any = {};
   // TypeScript public modifiers
 
   constructor(
     public appState: AppState,
+    public authService: AuthenticationService,
+    private router: Router,
   ) {
   }
 
@@ -26,6 +30,10 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
+    console.log('Logging in');
+    this.authService.login(this.localState.username, this.localState.password).subscribe(
+      (data) => this.router.navigate(['/resume-editor'])
+    );
   }
 
 }

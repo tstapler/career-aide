@@ -235,6 +235,11 @@ module.exports = function (options) {
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
+      },
+      proxy: {
+        '/api': {
+          target: "http://localhost:3030"
+        }
       }
     },
 

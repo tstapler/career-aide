@@ -1,6 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  NgZone,
+  ApplicationRef
 } from '@angular/core';
 
 import { AppState } from '../app.service';
@@ -9,6 +11,10 @@ import { resumeSchema } from './../resume_schema';
 import { resumeLayout } from './../resume_form_layout';
 
 import { FrameworkLibraryService } from 'angular2-json-schema-form';
+
+import { ResumeService } from '../_services';
+
+import 'rxjs/add/operator/catch';
 
 @Component({
   // The selector is what angular internally uses
@@ -19,7 +25,7 @@ import { FrameworkLibraryService } from 'angular2-json-schema-form';
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: ['./resume-editor.component.css'],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './resume-editor.component.html'
+  templateUrl: './resume-editor.component.html',
 })
 export class ResumeEditorComponent implements OnInit {
   // Set our default values
@@ -30,7 +36,21 @@ export class ResumeEditorComponent implements OnInit {
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
+    private resumeService: ResumeService,
+    private zone: NgZone,
+    private appRef: ApplicationRef
   ) {
+    setTimeout(() => {
+      this.resumeService.get().subscribe((data) => {
+        console.log('Resume Service Data');
+        console.log(data);
+        this.resumeModel = data;
+        appRef.tick();
+        zone.run(() => {
+          this.resumeModel = data;
+        });
+      });
+    }, 500);
   }
 
   public ngOnInit() {
@@ -40,6 +60,6 @@ export class ResumeEditorComponent implements OnInit {
 
   public submitResume(resumeForm) {
     console.log(resumeForm);
+    this.resumeService.set(resumeForm).subscribe((data) => console.log(data));
   }
-
 }

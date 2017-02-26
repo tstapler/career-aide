@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    this.appState.set('user-id', null);
+    this.appState.set('auth-token', null);
+    this.appState.set('resume-id', null);
+    this.appState.set('username', null);
   }
 
 }
