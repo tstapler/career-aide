@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     public title: Title,
     private frameworkLibrary: FrameworkLibraryService
   ) {
-    frameworkLibrary.setFramework('bootstrap-3', true);
+    frameworkLibrary.setFramework('material', true);
   }
 
   public ngOnInit() {
