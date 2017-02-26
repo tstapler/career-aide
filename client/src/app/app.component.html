@@ -14,22 +14,22 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li role="presentation">
-          <a [routerLink]=" ['./resume-editor'] "
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [routerLink]=" ['./resume-editor'] "
             routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
             Edit Resumes
           </a>
         </li>
-        <li role="presentation">
-          <a [routerLink]=" ['./about'] "
+        <li class="nav-item" role="presentation" >
+          <a class="nav-link" [routerLink]=" ['./about'] "
             routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
             About
           </a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li role="presentation">
-          <a [routerLink]=" ['./login'] "
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" [routerLink]=" ['./login'] "
             routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
             Login
           </a>
