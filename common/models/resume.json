@@ -7,11 +7,11 @@
     "validateUpsert": true
   },
   "properties": {
-    "userName": {
+    "username": {
       "type": "string",
       "required": true
     },
-    "resumeName": {
+    "resumename": {
       "type": "string",
       "required": true
     }

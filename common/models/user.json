@@ -1,10 +1,16 @@
 {
   "name": "user",
   "base": "User",
-  "idInjection": true,
+  "idInjection": false,
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "resumes": {
+      "type": "hasMany",
+      "model": "Resume",
+      "foreignKey": "username"
+    }
+  },
   "acls": [
     {
       "principalType": "ROLE",

@@ -8,10 +8,10 @@ var dsConfig = require('../datasources.json');
 module.exports = function(app) {
   var User = app.models.user;
 
-  //verified
-  app.get('/verified', function(req, res) {
-    res.render('verified');
-  });
+  // //verified
+  // app.get('/verified', function(req, res) {
+  //   res.render('verified');
+  // });
 
   //log a user in
   app.post('/login', function(req, res) {
@@ -29,10 +29,6 @@ module.exports = function(app) {
         return;
       }
 
-      res.render('home', {
-        email: req.body.email,
-        accessToken: token.id
-      });
     });
   });
 

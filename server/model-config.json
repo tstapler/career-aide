@@ -27,10 +27,7 @@
   },
   "RoleMapping": {
     "dataSource": "mongoDs",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
+    "public": false
   },
   "Role": {
     "dataSource": "mongoDs",
@@ -41,10 +38,7 @@
   },
   "user": {
     "dataSource": "mongoDs",
-    "public": true,
-    "options": {
-      "emailVerificationRequired": true
-    }
+    "public": true
   },
   "Resume": {
     "dataSource": "mongoDs",
