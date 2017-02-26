@@ -17,7 +17,7 @@ import { FrameworkLibraryService } from 'angular2-json-schema-form';
   selector: 'resume-editor',  // <resume-editor></resume-editor>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './resume-editor.component.css' ],
+  styleUrls: ['./resume-editor.component.css'],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './resume-editor.component.html'
 })
@@ -26,6 +26,7 @@ export class ResumeEditorComponent implements OnInit {
   public localState = { value: '' };
   public mySchema = resumeSchema;
   public appLayout = resumeLayout;
+  public resumeModel;
   // TypeScript public modifiers
   constructor(
     public appState: AppState,
@@ -37,21 +38,8 @@ export class ResumeEditorComponent implements OnInit {
     // this.title.getData().subscribe(data => this.data = data);
   }
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
+  public submitResume(resumeForm) {
+    console.log(resumeForm);
   }
 
-  public submitThing(val) {
-    console.log(val);
-  }
-
-  public showFormSchemaFn(evnt) {
-    console.log(evnt);
-  }
-
-  public showFormLayoutFn(evnt) {
-    console.log(evnt);
-  }
 }

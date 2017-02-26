@@ -9,11 +9,11 @@ import { NoContentComponent } from './no-content';
 import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
-  { path: 'resume-editor',  component: ResumeEditorComponent },
-  { path: 'login',  component: LoginComponent },
-  { path: 'register',  component: RegisterComponent },
-  { path: 'about',  component: AboutComponent },
-  { path: '**',    component: NoContentComponent },
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'resume-editor', component: ResumeEditorComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: NoContentComponent },
 ];

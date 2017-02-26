@@ -24,13 +24,14 @@ describe('Title', () => {
         deps: [MockBackend, BaseRequestOptions]
       },
       Title
-    ]}));
+    ]
+  }));
 
-  it('should have http', inject([ Title ], (title: Title) => {
+  it('should have http', inject([Title], (title: Title) => {
     expect(!!title.http).toEqual(true);
   }));
 
-  it('should get data from the server', inject([ Title ], (title: Title) => {
+  it('should get data from the server', inject([Title], (title: Title) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 

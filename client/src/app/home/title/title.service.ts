@@ -8,7 +8,7 @@ export class Title {
 
   constructor(
     public http: Http
-  ) {}
+  ) { }
 
   public getData() {
     console.log('Title#getData(): Get Data');

@@ -41,7 +41,7 @@ describe(`Home`, () => {
         Title,
       ]
     })
-    .compileComponents(); // compile template and css
+      .compileComponents(); // compile template and css
   }));
 
   // synchronous beforeEach

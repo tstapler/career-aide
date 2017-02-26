@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'about',
-  styleUrls: [ './about.component.html' ],
+  styleUrls: ['./about.component.html'],
   templateUrl: './about.component.html'
 })
 export class AboutComponent implements OnInit {
@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   public localState: any;
   constructor(
     public route: ActivatedRoute
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.route
