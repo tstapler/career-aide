@@ -30,6 +30,7 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { ResumeEditorComponent } from './resume-editor';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
@@ -37,7 +38,6 @@ import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './_services';
 import { AlertComponent } from './_directives';
 
-import'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
@@ -65,6 +65,7 @@ type StoreType = {
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    ResumeEditorComponent,
     NoContentComponent,
     XLargeDirective
   ],

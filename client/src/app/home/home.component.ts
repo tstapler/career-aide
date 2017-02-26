@@ -35,9 +35,7 @@ export class HomeComponent implements OnInit {
   constructor(
     public appState: AppState,
     public title: Title,
-    private frameworkLibrary: FrameworkLibraryService
   ) {
-    frameworkLibrary.setFramework('material', true);
   }
 
   public ngOnInit() {

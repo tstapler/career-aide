@@ -18,30 +18,7 @@ import { AppState } from './app.service';
   styleUrls: [
     './app.component.css'
   ],
-  template: `
-    <nav>
-      <a [routerLink]=" ['./'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./login'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Login
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';

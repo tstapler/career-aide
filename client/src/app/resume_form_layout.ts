@@ -1,7 +1,7 @@
   export let resumeLayout = [
     {
       type: 'fieldset',
-      title: 'Resume',
+      title: 'Resume Editor',
       items: [
         {
           type: 'tabs',
