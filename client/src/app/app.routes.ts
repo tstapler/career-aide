@@ -3,6 +3,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { ResumeEditorComponent } from './resume-editor';
+import { ResumeViewComponent } from './resume-view';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
@@ -17,5 +18,6 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'resume-view', component: ResumeViewComponent },
   { path: '**', component: NoContentComponent },
 ];

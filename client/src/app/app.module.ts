@@ -40,6 +40,7 @@ import { AlertComponent } from './_directives';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import {ResumeViewComponent} from "./resume-view/resume-view.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -66,6 +67,7 @@ type StoreType = {
     HomeComponent,
     RegisterComponent,
     ResumeEditorComponent,
+    ResumeViewComponent,
     NoContentComponent,
     XLargeDirective
   ],
