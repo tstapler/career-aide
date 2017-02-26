@@ -3,8 +3,7 @@
   "base": "PersistedModel",
   "strict": false,
   "idInjection": true,
-  "options": {
-  },
+  "options": {},
   "properties": {
     "username": {
       "type": "string",
@@ -18,5 +17,45 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "generatePdf": {
+      "accepts": [
+        {
+          "arg": "userId",
+          "type": "string",
+          "required": true,
+          "description": "id of user who owns resume"
+        },
+        {
+          "arg": "theme",
+          "type": "string",
+          "required": true,
+          "description": "theme (choices: 'flat', 'paper', 'classy', 'modern')"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "pdfOfResume",
+          "type": "file",
+          "root": true,
+          "description": "pdf generated from hackmyresume"
+        },
+         { "arg": "Content-Type",
+           "type": "string",
+           "http": { "target": "header" }
+         },
+         { "arg": "Content-Disposition",
+           "type": "string",
+           "http": { "target": "header" }
+         }
+      ],
+      "description": "generate pdf resume with hackmyresume",
+      "http": [
+        {
+          "path": "/generatePdf",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }
