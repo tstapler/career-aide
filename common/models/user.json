@@ -7,8 +7,7 @@
   "relations": {
     "resumes": {
       "type": "hasMany",
-      "model": "Resume",
-      "foreignKey": "username"
+      "model": "Resume"
     }
   },
   "acls": [
@@ -17,6 +16,12 @@
       "principalId": "$everyone",
       "accessType": "READ",
       "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__post__resumes"
     }
   ],
   "methods": []

@@ -4,7 +4,6 @@
   "strict": false,
   "idInjection": true,
   "options": {
-    "validateUpsert": true
   },
   "properties": {
     "username": {
