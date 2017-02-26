@@ -16,7 +16,7 @@ module.exports = function(app) {
   //   res.render('verified');
   // });
 
-  app.get("/resumes/viewHtml", function(req, res){
+  app.get("/api/Resumes/viewHtml", function(req, res){
     var userId = req.query.userId;
     var theme = req.query.theme;
     Resume.findOne({where: {userId: userId}}, function(err, resume){
