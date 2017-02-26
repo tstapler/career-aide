@@ -2,8 +2,13 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var path = require('path');
+var bodyParser = require('body-parser');
 
 var app = module.exports = loopback();
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.start = function() {
   // start the web server

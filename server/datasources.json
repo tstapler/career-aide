@@ -12,5 +12,23 @@
     "name": "mongoDs",
     "user": "",
     "connector": "mongodb"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+      "type": "smtp",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "ports": 465,
+      "tls": {
+        "rejectUnauthorized": false
+      },
+      "auth": {
+        "user": "stapler.aide@gmail.com",
+        "pass": "@1996Chris"
+      }
+      }]
   }
 }

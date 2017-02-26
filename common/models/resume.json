@@ -1,6 +1,7 @@
 {
-  "name": "ResumeUser",
+  "name": "Resume",
   "base": "PersistedModel",
+  "strict": false,
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -10,12 +11,8 @@
       "type": "string",
       "required": true
     },
-    "email": {
+    "resumeName": {
       "type": "string",
-      "required": true
-    },
-    "lastModifiedAt": {
-      "type": "date",
       "required": true
     }
   },
