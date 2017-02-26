@@ -73,12 +73,8 @@
                         'work[].endDate',
                         'work[].summary',
                         {
-                          title: 'Highlight {{ $index }} ',
-                          type: 'tabarray',
                           key: 'work[].highlights',
-                          items: [
-                            'work[].highlights[].description',
-                          ]
+                          type: 'text'
                         }
                       ]
                     }
@@ -105,15 +101,9 @@
                         'volunteer[].startDate',
                         'volunteer[].endDate',
                         'volunteer[].summary',
-                        {
-                          title: 'Highlight {{ $index }} ',
-                          type: 'tabarray',
-                          key: 'volunteer[].highlights',
-                          items: [
-                            'volunteer[].highlights[].description',
-                          ]
-                        }
-                      ]
+                        'volunteer[].highlights',
+                      ],
+                      startEmpty: true
                     }
                   ],
                 }
@@ -123,7 +113,8 @@
             {
               title: 'Education',
               items: [
-                { title: 'Educational History',
+                {
+                  title: 'Educational History',
                   type: 'section',
                   items: [
                     {
@@ -139,23 +130,175 @@
                         'education[].startDate',
                         'education[].endDate',
                         'education[].gpa',
-                        {
-                          title: 'Course',
-                          type: 'tabarray',
-                          key: 'education[].courses',
-                          items: [
-{ 
-  key: 'education[].courses[].description',
-  type: 'text'
-},
-                          ]
-                        }
+                        'education[].courses',
                       ]
                     }
-                  ],
+                  ]
                 }
-              ]
-            }
+              ],
+            },
+            {
+              title: 'Awards',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Award" }}',
+                      key: 'awards',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'awards[].title',
+                        'awards[].date',
+                        'awards[].awarder',
+                        'awards[].summary',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'Publications',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Publication" }}',
+                      key: 'publications',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'publications[].name',
+                        'publications[].publisher',
+                        'publications[].releaseDate',
+                        'publications[].url',
+                        'publications[].summary',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'Skills',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Skill" }}',
+                      key: 'skills',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'skills[].name',
+                        'skills[].level',
+                        'skills[].keywords',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'Languages',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Languages" }}',
+                      key: 'languages',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'languages[].language',
+                        'languages[].fluency',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'Interests',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Interest" }}',
+                      key: 'interests',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'interests[].name',
+                        'interests[].keywords',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'References',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Reference" }}',
+                      key: 'references',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'references[].name',
+                        'references[].reference',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+            {
+              title: 'Projects',
+              items: [
+                {
+                  type: 'section',
+                  items: [
+                    {
+                      title: '{{ value.name || "Project" }}',
+                      key: 'projects',
+                      type: 'tabarray',
+                      add: 'New',
+                      delete: 'Remove',
+                      items: [
+                        'projects[].name',
+                        'projects[].description',
+                        'projects[].highlights',
+                        'projects[].keywords',
+                        'projects[].startDate',
+                        'projects[].endDate',
+                        'projects[].url',
+                        'projects[].roles',
+                        'projects[].entity',
+                        'projects[].type',
+                      ]
+                    }
+                  ]
+                }
+              ],
+            },
+
           ]
         }
       ]
