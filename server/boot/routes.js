@@ -4,14 +4,35 @@
 // License text available at https://opensource.org/licenses/MIT
 
 var dsConfig = require('../datasources.json');
+var fs = require('fs');
+var path = require('path');
 
 module.exports = function(app) {
   var User = app.models.user;
+  var Resume = app.models.Resume;
 
   // //verified
   // app.get('/verified', function(req, res) {
   //   res.render('verified');
   // });
+
+  app.get("/resumes/viewHtml", function(req, res){
+    var userId = req.query.userId;
+    var theme = req.query.theme;
+    Resume.findOne({where: {userId: userId}}, function(err, resume){
+      pdfOfResume = resume.data;
+      mkdir("generated");
+      fs.writeFile("generated/resume.json", JSON.stringify(resume.data), function(err){
+        if(err){
+          return console.log(err);
+        }
+        exec("hackmyresume BUILD generated/resume.json TO generated/u"+ resume.username +".html -t node_modules/jsonresume-theme-"+ theme, function(){
+          console.log("hacking done!");
+          res.sendFile(path.join(__dirname + "/../../generated/u" + resume.username + ".html"));
+        });
+      });
+    });
+  });
 
   //log a user in
   app.post('/login', function(req, res) {

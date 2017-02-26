@@ -30,7 +30,7 @@
           "arg": "theme",
           "type": "string",
           "required": true,
-          "description": "theme (choices: 'flat', 'paper', 'classy', 'modern')"
+          "description": "theme (choices: 'flat', 'paper', 'classy', 'modern', 'onepage')"
         }
       ],
       "returns": [

@@ -4,11 +4,13 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
 var bodyParser = require('body-parser');
+require('shelljs/global');
 
 var app = module.exports = loopback();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+//app.use(loopback.static(path.resolve(__dirname, '../generated')));
 
 app.use(bodyParser.urlencoded({extended: true}));
 
