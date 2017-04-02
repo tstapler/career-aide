@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@angular/common@2.4.6", "@angular/common@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.6.tgz#f005528f75d0a6deaaf636f3b779f26bda4adb07"
+"@angular/common@2.4.7", "@angular/common@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.7.tgz#9316daf90e353e67187d2e0afec5521c2001bd4b"
 
 "@angular/compiler-cli@2.4.6":
   version "2.4.6"
@@ -14,21 +14,21 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@2.4.6", "@angular/compiler@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.6.tgz#17236b858f5730eed257d93e90bcbae45e21e0fe"
+"@angular/compiler@2.4.7", "@angular/compiler@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.7.tgz#008c1f0d1409c46fbba215fe8ab0d886252c7ff0"
 
-"@angular/core@2.4.6", "@angular/core@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.6.tgz#4abec78ee035b27e8192acf70409c3dbca24e829"
+"@angular/core@2.4.7", "@angular/core@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.7.tgz#8bed9a2d37e81342bd41d189df88aa3e02393cfb"
 
-"@angular/forms@2.4.6", "@angular/forms@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.6.tgz#aca73ad404ebe3022ffb6461cb6c06da864185fe"
+"@angular/forms@2.4.7", "@angular/forms@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.7.tgz#d34a36110e10f641aa1e1420b5c2df65987fd8bb"
 
-"@angular/http@2.4.6":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.6.tgz#32952ce82558f939be52863faa8cab19b20351fd"
+"@angular/http@2.4.7":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.7.tgz#b024b2b49ae0234258d42309e46f65862a42070d"
 
 "@angular/material@2.0.0-alpha.11-3":
   version "2.0.0-alpha.11-3"
@@ -36,23 +36,23 @@
   dependencies:
     "@types/hammerjs" "^2.0.30"
 
-"@angular/platform-browser-dynamic@2.4.6", "@angular/platform-browser-dynamic@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.6.tgz#d50d8b66f7fa00c0449f33c2c1b5348b67c9fcda"
+"@angular/platform-browser-dynamic@2.4.7", "@angular/platform-browser-dynamic@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.7.tgz#9632586f9ce596186be4c124c3ea0a4a74b27b46"
 
-"@angular/platform-browser@2.4.6", "@angular/platform-browser@2.x":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.6.tgz#ded44169d4a870d5ee40e95496d34e9ab03c2c3a"
+"@angular/platform-browser@2.4.7", "@angular/platform-browser@2.x":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.7.tgz#19f7996a70f07b34ce8d6d0e255544e62cae75f1"
 
-"@angular/platform-server@2.4.6":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.6.tgz#753a60866583e0469532719a3d0b92d0763bcef9"
+"@angular/platform-server@2.4.7":
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.7.tgz#e2a9f283b4eb25b967ab085c83350c0a08927617"
   dependencies:
     parse5 "^2.2.1"
 
-"@angular/router@3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.6.tgz#df708503f2006a090a2704f5490a9ea1ba9fc9d0"
+"@angular/router@3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.8.tgz#d569099359848a3f708df87f685c98d37621ab97"
 
 "@angular/tsc-wrapped@0.5.0":
   version "0.5.0"

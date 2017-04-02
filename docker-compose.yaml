@@ -1,0 +1,16 @@
+version: '2'
+services:
+  career-aide:
+    build: .
+    restart: always
+    links:
+      - "mongo:mongo"
+    ports:
+     - "80:80"
+  mongo:
+    image: "mongo"
+    ports: 
+      - "27017:27017"
+    volumes:
+      - ./db:/data/db
+

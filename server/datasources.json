@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mongoDs": {
-    "host": "localhost",
+    "host": "mongo",
     "port": 27017,
     "url": false,
     "database": "test",
@@ -27,7 +27,7 @@
       },
       "auth": {
         "user": "stapler.aide@gmail.com",
-        "pass": "@1996Chris"
+        "pass": "notpass"
       }
       }]
   }
