@@ -7,8 +7,8 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
-import { resumeSchema } from './../resume_schema';
-import { resumeLayout } from './../resume_form_layout';
+import { resumeSchema } from '../resume_schema';
+import { resumeLayout } from '../resume_form_layout';
 
 import { FrameworkLibraryService } from 'angular2-json-schema-form';
 

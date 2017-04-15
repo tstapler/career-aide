@@ -95,7 +95,6 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.4.6",
-    "@types/lodash": "4.14.50",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^7.0.0",

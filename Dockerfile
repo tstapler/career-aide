@@ -10,7 +10,7 @@ COPY default.conf /etc/nginx/conf.d/
 COPY default.conf /etc/nginx/conf.d/
 
 WORKDIR /usr/src/app
-RUN npm install
 RUN npm install -g typescript rimraf webpack  webpack-dev-server supervisor phantomjs-prebuilt hackmyresume
+RUN npm install
 RUN mv -f server/prod.config.json server/config.json
 ENTRYPOINT ["/usr/src/app/start_container.sh"]

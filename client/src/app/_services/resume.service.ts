@@ -22,7 +22,8 @@ export class ResumeService {
   }
 
   public get() {
-    this.options.search = new URLSearchParams({access_token: this.appState.get('auth-token')});
+    this.options.search = new URLSearchParams();
+    this.options.search.set("access_token", this.appState.get('auth-token'));
     let path = '/api/users/' + this.appState.get('user-id') + '/resumes';
     console.log(path);
     return this.http.get(path, this.options)
@@ -39,7 +40,8 @@ export class ResumeService {
   }
 
   public set(resume) {
-    this.options.search = new URLSearchParams({access_token: this.appState.get('auth-token')});
+    this.options.search = new URLSearchParams();
+    this.options.search.set("access_token", this.appState.get('auth-token'));
     let path = '/api/users/' + this.appState.get('user-id') + '/resumes';
     console.log('Sending resume');
     let payload = {
@@ -49,7 +51,7 @@ export class ResumeService {
       data: resume
     };
     if (this.appState.get('resume-id') != null) {
-      payload.id = this.appState.get('resume-id');
+      payload.userId = this.appState.get('resume-id');
       path = '/api/Resumes/' + this.appState.get('resume-id');
       return this.http.patch(path, JSON.stringify(payload), this.options)
       .map((response: Response) => {
