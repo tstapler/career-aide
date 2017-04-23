@@ -20,11 +20,12 @@ module.exports = function(app) {
     var userId = req.query.userId;
     var theme = req.query.theme;
     Resume.findOne({where: {userId: userId}}, function(err, resume){
-      pdfOfResume = resume.data;
-      mkdir("generated");
+      if(!fs.existsSync("generated")){
+        fs.mkdirSync("generated");
+      }
       fs.writeFile("generated/resume.json", JSON.stringify(resume.data), function(err){
         if(err){
-          return console.log(err);
+          return console.error(err);
         }
         exec("hackmyresume BUILD generated/resume.json TO generated/u"+ resume.username +".html -t node_modules/jsonresume-theme-"+ theme, function(){
           console.log("hacking done!");
@@ -47,7 +48,6 @@ module.exports = function(app) {
           redirectTo: '/',
           redirectToLinkText: 'Try again'
         });
-        return;
       }
 
     });
