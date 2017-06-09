@@ -8,6 +8,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "@mean-expert/loopback-sdk-builder": "^2.1.0-rc.10.2",
     "body-parser": "^1.16.1",
     "compression": "^1.0.3",
     "cors": "^2.5.2",

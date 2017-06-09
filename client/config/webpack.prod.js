@@ -162,6 +162,7 @@ module.exports = function (env) {
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
+        'API_URL': HOST + ENV
       }),
 
       /**

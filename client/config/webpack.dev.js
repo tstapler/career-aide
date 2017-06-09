@@ -26,7 +26,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: HMR
+  HMR: HMR,
+  API_HOST: HOST + ':' + '3030'
 });
 
 
@@ -150,7 +151,8 @@ module.exports = function (options) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
-        }
+        },
+        'API_HOST': JSON.stringify(METADATA.API_HOST)
       }),
 
       new DllBundlesPlugin({
@@ -217,7 +219,6 @@ module.exports = function (options) {
 
         }
       }),
-
     ],
 
     /**

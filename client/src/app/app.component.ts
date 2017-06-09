@@ -20,22 +20,10 @@ import { AppState } from './app.service';
   ],
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Career Aide';
   public url = 'https://github.com/tstapler/career-aide';
-
-  constructor(
-    public appState: AppState
-  ) { }
-
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-    this.appState.set('user-id', null);
-    this.appState.set('auth-token', null);
-    this.appState.set('resume-id', null);
-    this.appState.set('username', null);
-  }
 
 }
 

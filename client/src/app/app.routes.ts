@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { ResumeEditorComponent } from './resume-editor';
-import { ResumeViewComponent } from './resume-view';
+import { LoginComponent, RegistrationComponent } from './auth';
+import { ResumeEditorComponent, ResumeViewComponent } from './resumes';
 import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
 
-import { AuthGuard } from './_guards';
+import { AuthGuard } from './auth';
 
 import { DataResolver } from './app.resolver';
 
@@ -16,8 +13,7 @@ export const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'resume-editor', component: ResumeEditorComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'resume-view', component: ResumeViewComponent },
-  { path: '**', component: NoContentComponent },
+  { path: 'resume-view', component: ResumeViewComponent, canActivate: [AuthGuard] },
 ];
