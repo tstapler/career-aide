@@ -10,11 +10,19 @@ import { provideReduxForms } from '@angular-redux/form';
 
 // Redux ecosystem stuff.
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { persistStore, persistReducer } from 'redux-persist';
+
+import localForage from 'localforage'
 
 // The top-level reducers and epics that make up our app's logic.
 import { IAppState } from './store.types';
 import { rootReducer } from './store.reducer';
 import { RootEpics } from './store.epics';
+
+const persistConfig = {
+  key: 'root',
+  storage: localForage
+}
 
 @NgModule({
   imports: [NgReduxModule, NgReduxRouterModule],
@@ -31,7 +39,7 @@ export class StoreModule {
     // chrome extension is available in the browser, tell Redux about
     // it too.
     store.configureStore(
-      rootReducer,
+      persistReducer(persistConfig, rootReducer),
       {},
       rootEpics.createEpics(),
       devTools.isEnabled() ? [devTools.enhancer()] : []);
@@ -41,5 +49,7 @@ export class StoreModule {
 
     // Enable syncing of Angular form state with our Redux store.
     provideReduxForms(store);
+
+    persistStore(store);
   }
 }

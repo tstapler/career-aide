@@ -68,7 +68,7 @@
     "webpack": "webpack"
   },
   "dependencies": {
-"@angular-redux/form": "^6.5.2",
+    "@angular-redux/form": "^6.5.2",
     "@angular-redux/router": "^6.3.1",
     "@angular-redux/store": "^6.5.6",
     "@angular/animations": "^4.3.2",
@@ -96,10 +96,12 @@
     "jasmine-core": "^2.5.2",
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
+    "localforage": "^1.5.0",
     "ng2-select": "^1.2.0",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-observable": "^0.14.1",
+    "redux-persist": "next",
     "reflect-metadata": "^0.1.9",
     "resume-schema": "0.0.16",
     "rxjs": "^5.4.2",
