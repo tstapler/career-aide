@@ -10,12 +10,12 @@ import { ResumeActions } from './resume.actions';
 import { ResumeEpics } from './resume.epics';
 import { ResumeEditorComponent } from './resume-editor';
 import { ResumeViewComponent } from './resume-view';
-import { ResumeSelectorComponent } from './resume-selector';
+import { ResumeManagerComponent } from './resume-manager';
 
 @NgModule({
   declarations: [
     ResumeEditorComponent,
-    ResumeSelectorComponent,
+    ResumeManagerComponent,
     ResumeViewComponent
   ],
   exports: [ResumeEditorComponent, ResumeViewComponent],

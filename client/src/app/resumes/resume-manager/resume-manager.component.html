@@ -1,0 +1,16 @@
+<div *ngIf="creating_resume">
+  <div class="form-group">
+    <label for="resume-name">Resume Name</label>
+    <input type="text">
+  </div>
+
+  <button type="submit" (click)="createResume()" class="btn btn-success">Save New Resume</button>
+</div>
+
+<div *ngIf="!creating_resume">
+  <div *ngIf="resumes.length > 0">
+    <ng-select [items]="resumes" [active]="current"(selected)="updateSelected($event)"></ng-select>
+    <div class="btn btn-primary">Delete Resume</div>
+  </div>
+  <div class="btn btn-primary" (click)="createResume()">Create Resume</div>
+</div>

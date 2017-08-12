@@ -8,13 +8,17 @@ import { Resume } from '../../sdk/models/Resume';
 import { ResumeActions } from '../resume.actions';
 
 @Component({
-  selector: 'resume-selector',
-  templateUrl: 'resume-selector.component.html'
+  selector: 'resume-manager',
+  templateUrl: 'resume-manager.component.html'
 })
-export class ResumeSelectorComponent {
+export class ResumeManagerComponent {
 
   public current: {};
   public resumes = [];
+
+  public creating_resume: boolean = false;
+
+  public new_resume_name: string = '';
 
   @select(['resumes', 'loaded']) private $resumes;
   @select(['resumes', 'current']) private $currentResume;
@@ -23,9 +27,7 @@ export class ResumeSelectorComponent {
     private resumeActions: ResumeActions) {
 
     this.$resumes.subscribe((r) => {
-      console.log(r);
       let output = _.map(_.values(r), (resume: Resume) => {
-        console.log(resume);
         return {
           id: resume,
           text: resume.resumename
@@ -47,5 +49,9 @@ export class ResumeSelectorComponent {
 
   public updateSelected(option) {
     this.resumeActions.setCurrentResume(option.id);
+  }
+
+  createResume() {
+    this.creating_resume = !this.creating_resume;
   }
 }
