@@ -1,6 +1,4 @@
     <div class="col-sm-6 col-sm-offset-3">
-      <select [(ngModel)]="resumename">
-        <option *ngFor="let r of resumes" [value]="r.id">{{r.resumename}}</option>
-      </select>
-      <json-schema-form [schema]="mySchema" [layout]="appLayout" [data]="getCurrentResume(resumename)" (onSubmit)="submitResume($event)"></json-schema-form>
+      <resume-selector></resume-selector>
+      <json-schema-form *ngIf="!formLoading" id="form" [schema]="mySchema" [layout]="appLayout" [data]="currentForm" (onSubmit)="submitResume($event)"></json-schema-form>
     </div>

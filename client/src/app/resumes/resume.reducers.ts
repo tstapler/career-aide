@@ -1,23 +1,49 @@
+import * as _ from 'lodash';
+import { Reducer } from '@angular-redux/store';
+
 import { ResumeActions } from './resume.actions';
-import { IResume } from './resume.types';
+import { IResume, SetResumePayload } from './resume.types';
 
 // A higher-order reducer: accepts an resume type and returns a reducer
 // that only responds to actions for that particular resume type.
-export function resumeReducer(state: IResume, action): IResume {
+export const resumeReducer = (state: IResume, action) => {
+  let current = null;
+  let loaded = {};
   switch (action.type) {
-    case ResumeActions.GET_ALL:
-      return state;
-    case ResumeActions.SET:
-      return state;
-    case ResumeActions.API_SUCCESS:
-      console.log(state);
-      state.resumes = action.payload;
+    case ResumeActions.GET_ALL_SUCCESS:
+      current = state.current;
+      _.forEach(action.payload, (resume) => {
+        if (current == null) {
+          current = resume;
+        }
+
+        loaded[resume.id] = resume;
+      });
+
+      return {
+        loaded,
+        current
+      };
+    case ResumeActions.SET_SUCCESS:
+      loaded = _.cloneDeep(state.loaded);
+      loaded[action.payload.result.id] = action.payload.result.resume;
+      return {
+        loaded,
+        current: state.current
+      };
+
+    case ResumeActions.CURRENT:
+      return {
+        current: action.payload,
+        loaded: state.loaded
+      };
     default:
       if (state) {
         return state;
       }
       return {
-        resumes: []
+        loaded: {},
+        current: null
       };
   }
 };

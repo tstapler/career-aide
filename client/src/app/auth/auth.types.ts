@@ -10,3 +10,7 @@ export interface IAuth {
   authenticated: boolean;
   token: SDKToken;
 };
+
+export interface AuthPayload {
+    token: SDKToken;
+}

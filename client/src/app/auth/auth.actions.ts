@@ -16,7 +16,6 @@ export class AuthActions {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   public login(username, password, returnUrl) {
-    console.log(returnUrl);
     this.ngRedux.dispatch({
       type: AuthActions.LOGIN,
       payload: {

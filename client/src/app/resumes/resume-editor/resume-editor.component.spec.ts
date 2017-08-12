@@ -47,13 +47,4 @@ describe(`ResumeEditor`, () => {
 
     fixture.detectChanges(); // trigger initial data binding
   });
-
-  it('should log ngOnInit', () => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
-
-    comp.ngOnInit();
-    expect(console.log).toHaveBeenCalled();
-  });
-
 });

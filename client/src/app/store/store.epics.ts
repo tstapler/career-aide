@@ -6,7 +6,8 @@ import { ResumeEpics } from '../resumes';
 
 @Injectable()
 export class RootEpics {
-  constructor(private authEpics: AuthEpics,
+  constructor(
+    private authEpics: AuthEpics,
     private resumeEpics: ResumeEpics
   ) { }
 
@@ -18,7 +19,6 @@ export class RootEpics {
       this.authEpics.success,
       this.resumeEpics.getResumes,
       this.resumeEpics.update,
-      this.resumeEpics.success
     ].map(createEpicMiddleware);
   }
 }

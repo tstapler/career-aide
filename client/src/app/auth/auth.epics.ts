@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import { ActionsObservable } from 'redux-observable';
 import { AuthActions } from './auth.actions';
 import { Observable } from 'rxjs/Observable';
@@ -14,6 +14,7 @@ import 'rxjs/add/operator/catch';
 import { LoopBackConfig } from '../sdk/index';
 import { UserApi } from '../sdk/services';
 import { IAuth } from './auth.types';
+import { ResumeActions } from '../resumes';
 
 const BASE_URL = '/api';
 
@@ -21,11 +22,19 @@ const DEFAULT_URL = '/resume-editor';
 
 @Injectable()
 export class AuthEpics {
+  @select(['auth', 'token']) private token$;
+
+  private token: any;
+
   constructor(private userApi: UserApi,
     private router: Router,
     private ngRedux: NgRedux<IAuth>) {
     LoopBackConfig.setBaseURL('http://' + API_HOST);
     LoopBackConfig.setApiVersion('api');
+
+    this.token$.subscribe((t) => {
+      this.token = t;
+    });
   }
 
   public login = (action$) => {
@@ -75,10 +84,19 @@ export class AuthEpics {
 
   public success = (action$) => {
     return action$.ofType(AuthActions.AUTH_SUCCESS)
-      .mergeMap(( action ) => {
+      .mergeMap((action) => {
+        if (this.token) {
+          console.log(this.token);
+          this.ngRedux.dispatch({
+            type: ResumeActions.GET_ALL,
+            payload: {
+              userId: this.token.userId
+            }
+          });
+        }
         let url = action.payload.returnUrl || DEFAULT_URL;
         this.router.navigate([url]);
-        return Observable.of({type: 'DONE'});
+        return Observable.of({ type: 'DONE' });
       });
   }
 }

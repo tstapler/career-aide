@@ -6,9 +6,10 @@
       </h1>
     </div>
   </div>
+  <resume-selector></resume-selector>
   <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
-      <form ngNoForm action="/api/Resumes/viewHtml" method="get" target="_blank">
+      <form ngNoForm action="/api/Resumes/generateHtml" method="get" target="_blank">
         <p >View your resume in html format!</p>
         <div class="form-group">
           <label>Choose theme</label>
@@ -21,6 +22,7 @@
           </select>
         </div>
         <input type="hidden" name="userId" value="{{userId}}">
+        <input type="hidden" name="resumeId" value="{{currentResumeId}}">
         <button type="submit" class="btn btn-primary">Show</button>
       </form>
     </div>
@@ -40,6 +42,7 @@
           </select>
         </div>
         <input type="hidden" name="userId" value="{{userId}}">
+        <input type="hidden" name="resumeId" value="{{currentResumeId}}">
 
         <button type="submit" class="btn btn-primary">Show</button>
       </form>

@@ -18,25 +18,25 @@ const BASE_URL = '/api';
 @Injectable()
 export class ResumeEpics {
 
-  constructor( private userApi: UserApi,
+  constructor(
+    private userApi: UserApi,
     private resumeApi: ResumeApi) {
     // API_HOST is inserted by webpack
-    LoopBackConfig.setBaseURL('http://' + API_HOST );
+    LoopBackConfig.setBaseURL('http://' + API_HOST);
     LoopBackConfig.setApiVersion('api');
   }
 
   public getResumes = (action$) => {
-    console.log(action$);
     return action$.ofType(ResumeActions.GET_ALL)
       .mergeMap(({ payload }) => {
         console.log(payload);
         return this.userApi.getResumes(payload.userId)
           .map((result) => ({
-            type: ResumeActions.API_SUCCESS,
+            type: ResumeActions.GET_ALL_SUCCESS,
             payload: result
           }))
           .catch((error) => Observable.of({
-            type: ResumeActions.API_FAILURE,
+            type: ResumeActions.GET_ALL_FAILURE,
           }));
       });
   }
@@ -46,20 +46,14 @@ export class ResumeEpics {
       .mergeMap(({ payload }) => {
         return this.resumeApi.patchOrCreate(payload)
           .map((result) => ({
-            type: ResumeActions.API_SUCCESS,
-            payload: result
+            type: ResumeActions.SET_SUCCESS,
+            payload: {
+              result
+            }
           }))
           .catch((error) => Observable.of({
-            type: ResumeActions.API_FAILURE,
+            type: ResumeActions.SET_FAILURE,
           }));
-      });
-  }
-
-  public success = (action$) => {
-    return action$.ofType(ResumeActions.API_SUCCESS)
-      .mergeMap(({ payload }) => {
-        console.log(payload);
-        return Observable.of({type: ResumeActions.DONE});
       });
   }
 }

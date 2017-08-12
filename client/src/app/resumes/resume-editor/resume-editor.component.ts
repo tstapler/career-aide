@@ -1,11 +1,12 @@
 import {
+  ApplicationRef,
+  ChangeDetectorRef,
   Component,
-  OnInit,
   NgZone,
-  ApplicationRef
 } from '@angular/core';
 
 import { select } from '@angular-redux/store';
+import { JsonSchemaFormComponent } from 'angular2-json-schema-form';
 
 import * as _ from 'lodash';
 
@@ -21,55 +22,46 @@ import 'rxjs/add/operator/catch';
   styleUrls: ['./resume-editor.component.css'],
   templateUrl: './resume-editor.component.html',
 })
-export class ResumeEditorComponent implements OnInit {
-  // TypeScript public modifiers
+export class ResumeEditorComponent {
   public mySchema = resumeSchema;
   public appLayout = resumeLayout;
-  public resumeModel= {};
-  public resumename;
+  public current = {};
+  public currentForm = {};
+  public formLoading = true;
 
-  @select(['resumes', 'resumes']) private $resumes: any;
+  @select(['resumes', 'loaded']) private $resumes: any;
+  @select(['resumes', 'current']) private $current: any;
   @select(['auth', 'token']) private $token: any;
 
   private token;
-  private resumes = [];
+  private resumes = {};
 
   constructor(
     private resumeActions: ResumeActions,
+    private cd: ChangeDetectorRef
   ) {
     this.$token.subscribe((t) => {
       this.token = t;
     });
     this.$resumes.subscribe((r) => {
-      console.log(r);
       this.resumes = r;
-      if(!this.resumename && r.length > 0) {
-        this.resumename = r[0].id;
+    });
+    this.$current.subscribe((c) => {
+      if (c) {
+        this.formLoading = true;
+        this.current = c;
+        this.currentForm = _.cloneDeep(c.resume);
+        this.formLoading = false;
       }
     });
-  }
-
-  public ngOnInit() {
-
-    this.resumeActions.getResumes(this.token.userId);
-  }
-
-  public getCurrentResume(resumeId) {
-    console.log(resumeId);
-    let value = _.find(this.resumes, ['id', resumeId]);
-    if (value) {
-      this.resumeModel = value.resume;
-      console.log(this.resumeModel);
-    }
-
-    return this.resumeModel;
   }
 
   public submitResume(resumeForm) {
     this.resumeActions.updateResume(
       this.token.user.username,
       this.token.userId,
-      this.resumename,
-      resumeForm);
+      this.current.resumename,
+      resumeForm,
+      this.current.id);
   }
 }

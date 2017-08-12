@@ -1,10 +1,11 @@
 import { ResumeInterface } from '../sdk/models/Resume';
 
-export const RESUME_TYPES = {
-  GET: 'get',
-  SET: 'set',
+export interface IResume {
+  loaded: {};
+  current: string;
 };
 
-export interface IResume {
-  resumes: {};
-};
+export interface SetResumePayload {
+  id: string;
+  result: ResumeInterface;
+}

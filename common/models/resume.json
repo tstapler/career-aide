@@ -27,6 +27,12 @@
           "description": "id of user who owns resume"
         },
         {
+          "arg": "resumeId",
+          "type": "string",
+          "required": true,
+          "description": "id of desired resume"
+        },
+        {
           "arg": "theme",
           "type": "string",
           "required": true,
@@ -53,6 +59,51 @@
       "http": [
         {
           "path": "/generatePdf",
+          "verb": "get"
+        }
+      ]
+    },
+    "generateHtml": {
+      "accepts": [
+        {
+          "arg": "userId",
+          "type": "string",
+          "required": true,
+          "description": "id of user who owns resume"
+        },
+        {
+          "arg": "resumeId",
+          "type": "string",
+          "required": true,
+          "description": "id of desired resume"
+        },
+        {
+          "arg": "theme",
+          "type": "string",
+          "required": true,
+          "description": "theme (choices: 'flat', 'paper', 'classy', 'modern', 'onepage')"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "htmlOfResume",
+          "type": "file",
+          "root": true,
+          "description": "html generated from hackmyresume"
+        },
+         { "arg": "Content-Type",
+           "type": "string",
+           "http": { "target": "header" }
+         },
+         { "arg": "Content-Disposition",
+           "type": "string",
+           "http": { "target": "header" }
+         }
+      ],
+      "description": "generate html resume with hackmyresume",
+      "http": [
+        {
+          "path": "/generateHtml",
           "verb": "get"
         }
       ]
