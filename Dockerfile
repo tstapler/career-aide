@@ -7,7 +7,7 @@ COPY . /usr/src/app
 RUN apt-get update && apt-get install -y \
             wkhtmltopdf
 
-RUN npm install -g typescript rimraf webpack  webpack-dev-server supervisor phantomjs-prebuilt hackmyresume
+RUN npm install -g typescript rimraf webpack  forever phantomjs-prebuilt hackmyresume
 
 WORKDIR /usr/src/app/client
 RUN npm install
@@ -17,4 +17,5 @@ WORKDIR /usr/src/app
 COPY default.conf /etc/nginx/conf.d/
 RUN npm install
 RUN mv -f server/prod.config.json server/config.json
+RUN mv -f server/prod.datasources.json server/datasources.json
 ENTRYPOINT ["/usr/src/app/start_container.sh"]
