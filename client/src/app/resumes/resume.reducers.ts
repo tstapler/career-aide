@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { Reducer } from '@angular-redux/store';
 
 import { ResumeActions } from './resume.actions';
 import { IResume, SetResumePayload } from './resume.types';

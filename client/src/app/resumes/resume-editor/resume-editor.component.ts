@@ -25,7 +25,13 @@ import 'rxjs/add/operator/catch';
 export class ResumeEditorComponent {
   public mySchema = resumeSchema;
   public appLayout = resumeLayout;
-  public current = {};
+  public current:  {
+    resumename: string;
+    id: string;
+  } = { 
+    resumename: '',
+    id: ''
+  };
   public currentForm = {};
   public formLoading = true;
 

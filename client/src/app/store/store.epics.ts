@@ -12,13 +12,16 @@ export class RootEpics {
   ) { }
 
   public createEpics() {
-    return [
+    return [createEpicMiddleware(combineEpics(
       this.authEpics.login,
       this.authEpics.logout,
       this.authEpics.register,
       this.authEpics.success,
       this.resumeEpics.getResumes,
       this.resumeEpics.update,
-    ].map(createEpicMiddleware);
+    ))];
   }
 }
+// '<T, S>(rootEpic: Epic<T, S>, options?: Options) => EpicMiddleware<T, S>'
+// is not assignable to parameter of type 
+// '(value: (action$: any) => any, index: number, array: ((action$: any) => any)[]) => EpicMiddleware...'.

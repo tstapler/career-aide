@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { NgRedux, select } from '@angular-redux/store';
-import { ActionsObservable } from 'redux-observable';
 import { AuthActions } from './auth.actions';
 import { Observable } from 'rxjs/Observable';
 
@@ -38,10 +37,8 @@ export class AuthEpics {
   }
 
   public login = (action$) => {
-    console.log(action$);
     return action$.ofType(AuthActions.LOGIN)
       .mergeMap(({ payload }) => {
-        console.log(payload);
         return this.userApi.login(payload)
           .map((result) => ({
             type: AuthActions.AUTH_SUCCESS,

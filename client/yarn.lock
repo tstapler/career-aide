@@ -2,19 +2,19 @@
 # yarn lockfile v1
 
 
-"@angular-redux/form@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@angular-redux/form/-/form-6.3.0.tgz#04d97a95da93cb69c852406ffbb8a5c633712977"
+"@angular-redux/form@^6.5.2":
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@angular-redux/form/-/form-6.6.0.tgz#8b958748142188342071ece7740b6ba24c5b9a5a"
   dependencies:
     immutable "^3.8.1"
 
-"@angular-redux/router@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@angular-redux/router/-/router-6.3.0.tgz#0ece17ad5a4eb8a40f54d7e3a67e67598f03d2cd"
+"@angular-redux/router@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@angular-redux/router/-/router-6.3.1.tgz#847f790b3e3b2d1c8bdad4d4bf3068cd4e0fbf07"
 
-"@angular-redux/store@^6.2.1":
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-6.2.1.tgz#eac7c5fc1f3647f303625a9f94e735df036eb368"
+"@angular-redux/store@^6.5.6":
+  version "6.5.7"
+  resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-6.5.7.tgz#22c3b4815c89d6cca0ac93dddb7cabec3966f1fc"
 
 "@angular/animations@^4.3.2":
   version "4.3.2"
@@ -1581,6 +1581,10 @@ debug@2.6.8:
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
+
+deep-diff@^0.3.5:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
 
 deep-extend@~0.4.0:
   version "0.4.1"
@@ -4973,6 +4977,12 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-logger@^3.0.1:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+  dependencies:
+    deep-diff "^0.3.5"
+
 redux-observable@^0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.14.1.tgz#9f3d870c69388fdc427ded6770a3e326f3b69693"
@@ -4989,6 +4999,15 @@ redux@^3.0.5:
     lodash-es "^4.2.1"
     loose-envify "^1.1.0"
     symbol-observable "^1.0.2"
+
+redux@^3.6.0:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
+  dependencies:
+    lodash "^4.2.1"
+    lodash-es "^4.2.1"
+    loose-envify "^1.1.0"
+    symbol-observable "^1.0.3"
 
 reflect-metadata@0.1.2:
   version "0.1.2"
@@ -5779,7 +5798,7 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-symbol-observable@^1.0.1, symbol-observable@^1.0.2:
+symbol-observable@^1.0.1, symbol-observable@^1.0.2, symbol-observable@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
 

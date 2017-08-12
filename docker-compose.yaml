@@ -1,14 +1,5 @@
 version: '2'
 services:
-  career-aide:
-    build: .
-    depends_on:
-      - mongo
-    links:
-      - "mongo:mongo"
-    ports:
-      - "80:80"
-      - "3030:3030"
   mongo:
     image: "mongo"
     ports: 
