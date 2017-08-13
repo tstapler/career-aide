@@ -31,6 +31,7 @@ import { HomeComponent } from './home';
 import { AuthModule } from './auth';
 import { ResumeModule } from './resumes';
 import { AboutComponent } from './about';
+import { NavAideComponent } from './nav';
 
 
 import '../styles/styles.scss';
@@ -53,6 +54,7 @@ const APP_PROVIDERS = [
     AppComponent,
     AboutComponent,
     HomeComponent,
+    NavAideComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
