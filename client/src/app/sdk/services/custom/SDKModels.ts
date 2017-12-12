@@ -13,7 +13,7 @@ export class SDKModels {
     Email: Email,
     User: User,
     Resume: Resume,
-
+    
   };
 
   public get(modelName: string): any {

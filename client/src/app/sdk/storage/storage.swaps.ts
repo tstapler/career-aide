@@ -1,3 +1,4 @@
+/* tslint:disable */
 /**
  * @module Storage
  * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
@@ -14,7 +15,7 @@ export class BaseStorage {
    * @description
    * The getter will return any type of data persisted in storage.
    **/
-  get(key: string): any { }
+  get(key: string): any {}
   /**
    * @method set
    * @param {string} key Storage key name
@@ -23,7 +24,7 @@ export class BaseStorage {
    * @description
    * The setter will return any type of data persisted in localStorage.
    **/
-  set(key: string, value: any): void { }
+  set(key: string, value: any, expires?: Date): void {}
   /**
    * @method remove
    * @param {string} key Storage key name
@@ -31,7 +32,7 @@ export class BaseStorage {
    * @description
    * This method will remove a localStorage item from the client.
    **/
-  remove(key: string): void { }
+  remove(key: string): void {}
 }
 /**
  * @module InternalStorage
@@ -43,7 +44,7 @@ export class BaseStorage {
  * This is mainly required because Angular Universal integration.
  * It does inject a CookieStorage instead of LocalStorage.
  **/
-export class InternalStorage extends BaseStorage { }
+export class InternalStorage extends BaseStorage {}
 /**
  * @module SDKStorage
  * @author Jonathan Casarrubias <t: johncasarrubias, gh: mean-expert-official>
@@ -54,4 +55,4 @@ export class InternalStorage extends BaseStorage { }
  * This is created for public usage, to allow persisting custom data
  * Into the local storage API.
  **/
-export class SDKStorage extends BaseStorage { }
+export class SDKStorage extends BaseStorage {}

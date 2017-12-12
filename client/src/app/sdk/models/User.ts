@@ -7,11 +7,10 @@ declare var Object: any;
 export interface UserInterface {
   "realm"?: string;
   "username"?: string;
-  "password": string;
   "email": string;
   "emailVerified"?: boolean;
-  "verificationToken"?: string;
   "id"?: any;
+  "password"?: string;
   accessTokens?: any[];
   resumes?: Resume[];
 }
@@ -19,11 +18,10 @@ export interface UserInterface {
 export class User implements UserInterface {
   "realm": string;
   "username": string;
-  "password": string;
   "email": string;
   "emailVerified": boolean;
-  "verificationToken": string;
   "id": any;
+  "password": string;
   accessTokens: any[];
   resumes: Resume[];
   constructor(data?: UserInterface) {
@@ -42,7 +40,7 @@ export class User implements UserInterface {
   * @license MIT
   * This method creates an instance of User for dynamic purposes.
   **/
-  public static factory(data: UserInterface): User {
+  public static factory(data: UserInterface): User{
     return new User(data);
   }
   /**
@@ -56,6 +54,8 @@ export class User implements UserInterface {
     return {
       name: 'User',
       plural: 'Users',
+      path: 'Users',
+      idName: 'id',
       properties: {
         "realm": {
           name: 'realm',
@@ -63,10 +63,6 @@ export class User implements UserInterface {
         },
         "username": {
           name: 'username',
-          type: 'string'
-        },
-        "password": {
-          name: 'password',
           type: 'string'
         },
         "email": {
@@ -77,25 +73,31 @@ export class User implements UserInterface {
           name: 'emailVerified',
           type: 'boolean'
         },
-        "verificationToken": {
-          name: 'verificationToken',
-          type: 'string'
-        },
         "id": {
           name: 'id',
           type: 'any'
+        },
+        "password": {
+          name: 'password',
+          type: 'string'
         },
       },
       relations: {
         accessTokens: {
           name: 'accessTokens',
           type: 'any[]',
-          model: ''
+          model: '',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'userId'
         },
         resumes: {
           name: 'resumes',
           type: 'Resume[]',
-          model: 'Resume'
+          model: 'Resume',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'userId'
         },
       }
     }

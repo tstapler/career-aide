@@ -1,5 +1,8 @@
+/* tslint:disable */
+import 'rxjs/add/observable/merge';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/merge';
 import { LoopBackFilter, StatFilter } from './index';
 import { SocketConnection } from '../sockets/socket.connections';
 /**
@@ -18,6 +21,8 @@ export class FireLoopRef<T> {
   private instance: any;
   // Model Childs
   private childs: any = {};
+  // Disposable Events
+  private disposable: { [key: string]: any } = {};
   /**
   * @method constructor
   * @param {any} model The model we want to create a reference
@@ -54,9 +59,13 @@ export class FireLoopRef<T> {
   * }
   **/
   public dispose(): void {
-    this.operation('dispose', {})
-      .subscribe()
-      .unsubscribe();
+    const subscription = this.operation('dispose', {}).subscribe(() => {
+      Object.keys(this.disposable).forEach((channel: string) => {
+        this.socket.removeListener(channel, this.disposable[channel]);
+        this.socket.removeAllListeners(channel);
+      });
+      subscription.unsubscribe();
+    });
   }
   /**
   * @method upsert
@@ -246,12 +255,21 @@ export class FireLoopRef<T> {
   **/
   private broadcasts(event: string, request: any): Observable<T> {
     let sbj: Subject<T> = new Subject<T>();
-    this.socket.on(
-      `${event}.broadcast.announce.${this.id}`,
-      (res: T) =>
-        this.socket.emit(`${event}.broadcast.request.${this.id}`, request)
-    );
-    this.socket.on(`${event}.broadcast.${this.id}`, (data: any) => sbj.next(data));
+    let channels: { announce: string, broadcast: string } = {
+      announce: `${event}.broadcast.announce.${this.id}`,
+      broadcast: `${event}.broadcast.${this.id}`
+    };
+    let that = this;
+    // Announces Handler
+    this.disposable[channels.announce] = function (res: T) {
+      that.socket.emit(`${event}.broadcast.request.${that.id}`, request)
+    };
+    // Broadcasts Handler
+    this.disposable[channels.broadcast] = function (data: any) {
+      sbj.next(data);
+    };
+    this.socket.on(channels.announce, this.disposable[channels.announce]);
+    this.socket.on(channels.broadcast, this.disposable[channels.broadcast]);
     return sbj.asObservable();
   }
   /**
@@ -274,13 +292,22 @@ export class FireLoopRef<T> {
       parent: this.parent && this.parent.instance ? this.parent.instance : null
     };
     this.socket.emit(event, config);
-    this.socket.on(`${this.model.getModelName()}.value.result.${this.id}`, (res: any) => {
+    let resultEvent: string = '';
+    if (!this.relationship) {
+      resultEvent = `${this.model.getModelName()}.value.result.${this.id}`;
+    } else {
+      resultEvent = `${this.parent.model.getModelName()}.${this.relationship}.value.result.${this.id}`;
+    }
+    this.socket.on(resultEvent, (res: any) => {
       if (res.error) {
         subject.error(res);
       } else {
         subject.next(res);
       }
     });
+    if (event.match('dispose')) {
+      setTimeout(() => subject.next());
+    }
     // This event listener will be wiped within socket.connections
     this.socket.sharedObservables.sharedOnDisconnect.subscribe(() => subject.complete());
     return subject.asObservable().catch((error: any) => Observable.throw(error));

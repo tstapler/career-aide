@@ -1,3 +1,4 @@
+/* tslint:disable */
 /**
 * @module SDKModule
 * @author Jonathan Casarrubias <t:@johncasarrubias> <gh:jonathan-casarrubias>
@@ -61,10 +62,10 @@ import { ResumeApi } from './services/custom/Resume';
 *  3.- Progressive applications (Angular Mobile, Ionic, WebViews, etc)
 **/
 @NgModule({
-  imports: [CommonModule, HttpModule],
-  declarations: [],
-  exports: [],
-  providers: [
+  imports:      [ CommonModule, HttpModule ],
+  declarations: [ ],
+  exports:      [ ],
+  providers:    [
     ErrorHandler,
     SocketConnection
   ]
@@ -75,8 +76,8 @@ export class SDKBrowserModule {
     useClass: CookieBrowser
   }): ModuleWithProviders {
     return {
-      ngModule: SDKBrowserModule,
-      providers: [
+      ngModule  : SDKBrowserModule,
+      providers : [
         LoopBackAuth,
         LoggerService,
         JSONSearchParams,
@@ -102,3 +103,4 @@ export * from './lb.config';
 export * from './storage/storage.swaps';
 export { CookieBrowser } from './storage/cookie.browser';
 export { StorageBrowser } from './storage/storage.browser';
+

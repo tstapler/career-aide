@@ -5,7 +5,7 @@ import { SDKModels } from './SDKModels';
 import { BaseLoopBackApi } from '../core/base.service';
 import { LoopBackConfig } from '../../lb.config';
 import { LoopBackAuth } from '../core/auth.service';
-import { LoopBackFilter, } from '../../models/BaseModels';
+import { LoopBackFilter,  } from '../../models/BaseModels';
 import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
@@ -28,7 +28,7 @@ export class EmailApi extends BaseLoopBackApi {
     @Inject(JSONSearchParams) protected searchParams: JSONSearchParams,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http, connection, models, auth, searchParams, errorHandler);
+    super(http,  connection,  models, auth, searchParams, errorHandler);
   }
 
   /**

@@ -11,6 +11,7 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
+    "build:sdk": "lb-sdk ../server/server.js ./src/app/sdk/ -d ng2web",
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
@@ -109,6 +110,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.3.2",
+    "@mean-expert/loopback-sdk-builder": "^2.1.2",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "^2.2.34",
     "@types/node": "^7.0.0",

@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Injectable } from '@angular/core';
 export interface CookieInterface { [key: string]: any }
 /**
@@ -24,8 +25,8 @@ export class CookieBrowser {
   get(key: string): any {
     if (!this.cookies[key]) {
       let cookie = window.document
-        .cookie.split('; ')
-        .filter((item: any) => item.split('=')[0] === key).pop();
+                         .cookie.split('; ')
+                         .filter((item: any) => item.split('=')[0] === key).pop();
       if (!cookie) {
         return null;
       }
@@ -46,7 +47,7 @@ export class CookieBrowser {
    **/
   set(key: string, value: any, expires?: Date): void {
     this.cookies[key] = value;
-    let cookie = `${key}=${value}; path=/${expires ? `; expires=${expires.toUTCString()}` : ''}`;
+    let cookie = `${key}=${value}; path=/${expires ? `; expires=${ expires.toUTCString() }` : ''}`;
     window.document.cookie = cookie;
   }
   /**
@@ -58,6 +59,7 @@ export class CookieBrowser {
    **/
   remove(key: string) {
     document.cookie = key + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    delete this.cookies[key];
   }
   /**
    * @method parse
@@ -69,9 +71,9 @@ export class CookieBrowser {
    **/
   private parse(value: any) {
     try {
-      return JSON.parse(value);
+        return JSON.parse(value);
     } catch (e) {
-      return value;
+        return value;
     }
   }
 }

@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,8 +11,8 @@ export class IO {
 
   emit(event: string, data: any): void {
     this.socket.emit('ME:RT:1://event', {
-      event: event,
-      data: data
+        event : event,
+        data  : data
     });
   }
 

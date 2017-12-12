@@ -33,7 +33,7 @@ export class Email implements EmailInterface {
   * @license MIT
   * This method creates an instance of Email for dynamic purposes.
   **/
-  public static factory(data: EmailInterface): Email {
+  public static factory(data: EmailInterface): Email{
     return new Email(data);
   }
   /**
@@ -47,6 +47,8 @@ export class Email implements EmailInterface {
     return {
       name: 'Email',
       plural: 'Emails',
+      path: 'Emails',
+      idName: 'id',
       properties: {
         "to": {
           name: 'to',

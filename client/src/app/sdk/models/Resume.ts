@@ -29,7 +29,7 @@ export class Resume implements ResumeInterface {
   * @license MIT
   * This method creates an instance of Resume for dynamic purposes.
   **/
-  public static factory(data: ResumeInterface): Resume {
+  public static factory(data: ResumeInterface): Resume{
     return new Resume(data);
   }
   /**
@@ -43,6 +43,8 @@ export class Resume implements ResumeInterface {
     return {
       name: 'Resume',
       plural: 'Resumes',
+      path: 'Resumes',
+      idName: 'id',
       properties: {
         "username": {
           name: 'username',
