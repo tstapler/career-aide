@@ -5,7 +5,7 @@ import { SDKModels } from './SDKModels';
 import { BaseLoopBackApi } from '../core/base.service';
 import { LoopBackConfig } from '../../lb.config';
 import { LoopBackAuth } from '../core/auth.service';
-import { LoopBackFilter, } from '../../models/BaseModels';
+import { LoopBackFilter,  } from '../../models/BaseModels';
 import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
@@ -28,7 +28,7 @@ export class ResumeApi extends BaseLoopBackApi {
     @Inject(JSONSearchParams) protected searchParams: JSONSearchParams,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http, connection, models, auth, searchParams, errorHandler);
+    super(http,  connection,  models, auth, searchParams, errorHandler);
   }
 
   /**
@@ -47,16 +47,16 @@ export class ResumeApi extends BaseLoopBackApi {
    * This usually means the response is a `Resume` object.)
    * </em>
    */
-  public patchOrCreate(data: any = {}): Observable<any> {
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-      "/Resumes";
+    "/Resumes";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -78,10 +78,10 @@ export class ResumeApi extends BaseLoopBackApi {
    * This usually means the response is a `Resume` object.)
    * </em>
    */
-  public patchAttributes(id: any, data: any = {}): Observable<any> {
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-      "/Resumes/:id";
+    "/Resumes/:id";
     let _routeParams: any = {
       id: id
     };
@@ -89,7 +89,7 @@ export class ResumeApi extends BaseLoopBackApi {
       data: data
     };
     let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
@@ -97,6 +97,8 @@ export class ResumeApi extends BaseLoopBackApi {
    * generate pdf resume with hackmyresume
    *
    * @param {string} userId id of user who owns resume
+   *
+   * @param {string} resumeId id of desired resume
    *
    * @param {string} theme theme (choices: 'flat', 'paper', 'classy', 'modern', 'onepage')
    *
@@ -106,16 +108,46 @@ export class ResumeApi extends BaseLoopBackApi {
    *
    * pdf generated from hackmyresume
    */
-  public generatePdf(userId: any, theme: any): Observable<any> {
+  public generatePdf(userId: any, resumeId: any, theme: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-      "/Resumes/generatePdf";
+    "/Resumes/generatePdf";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (userId) _urlParams.userId = userId;
-    if (theme) _urlParams.theme = theme;
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    if (typeof userId !== 'undefined' && userId !== null) _urlParams.userId = userId;
+    if (typeof resumeId !== 'undefined' && resumeId !== null) _urlParams.resumeId = resumeId;
+    if (typeof theme !== 'undefined' && theme !== null) _urlParams.theme = theme;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * generate html resume with hackmyresume
+   *
+   * @param {string} userId id of user who owns resume
+   *
+   * @param {string} resumeId id of desired resume
+   *
+   * @param {string} theme theme (choices: 'flat', 'paper', 'classy', 'modern', 'onepage')
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * html generated from hackmyresume
+   */
+  public generateHtml(userId: any, resumeId: any, theme: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Resumes/generateHtml";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof userId !== 'undefined' && userId !== null) _urlParams.userId = userId;
+    if (typeof resumeId !== 'undefined' && resumeId !== null) _urlParams.resumeId = resumeId;
+    if (typeof theme !== 'undefined' && theme !== null) _urlParams.theme = theme;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 

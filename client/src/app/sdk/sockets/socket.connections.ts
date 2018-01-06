@@ -4,6 +4,7 @@ import { SocketDriver } from './socket.driver';
 import { AccessToken } from '../models';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 import { LoopBackConfig } from '../lb.config';
 /**
 * @author Jonathan Casarrubias <twitter:@johncasarrubias> <github:@mean-expert-official>
@@ -34,7 +35,7 @@ export class SocketConnection {
     sharedOnAuthenticated?: Observable<any>,
     sharedOnUnAuthorized?: Observable<any>
   } = {};
-  private unauthenticated: boolean = true;
+  public authenticated: boolean = false;
   /**
    * @method constructor
    * @param {SocketDriver} driver Socket IO Driver
@@ -75,7 +76,7 @@ export class SocketConnection {
       // Create new socket connection
       this.socket = this.driver.connect(LoopBackConfig.getPath(), {
         log: false,
-        secure: false,
+        secure: LoopBackConfig.isSecureWebSocketsSet(),
         forceNew: true,
         forceWebsockets: true,
         transports: ['websocket']
@@ -88,16 +89,18 @@ export class SocketConnection {
       });
       // Listen for authentication
       this.on('authenticated', () => {
+        this.authenticated = true;
         this.subjects.onAuthenticated.next();
         this.heartbeater();
       })
       // Listen for authentication
       this.on('unauthorized', (err: any) => {
+        this.authenticated = false;
         this.subjects.onUnAuthorized.next(err);
       })
       // Listen for disconnections
       this.on('disconnect', (status: any) => this.subjects.onDisconnect.next(status));
-    } else if (this.socket && !this.socket.connected) {
+    } else if (this.socket && !this.socket.connected){
       if (typeof this.socket.off === 'function') {
         this.socket.off();
       }
@@ -161,6 +164,21 @@ export class SocketConnection {
     }
   }
   /**
+   * @method removeAllListeners
+   * @param {string} event Event name
+   * @param {Function} handler Event listener handler
+   * @return {void}
+   * @description
+   * This method will wrap the original "on" method and run it within the Angular Zone
+   * Note: off is being used since the nativescript socket io client does not provide
+   * removeListener method, but only provides with off which is provided in any platform.
+   **/
+  public removeAllListeners(event: string): void {
+    if (typeof this.socket.removeAllListeners === 'function') {
+      this.socket.removeAllListeners(event);
+    }
+  }
+  /**
    * @method disconnect
    * @return {void}
    * @description
@@ -181,6 +199,7 @@ export class SocketConnection {
       if (this.isConnected()) {
         this.socket.emit('lb-ping');
       } else {
+        this.socket.removeAllListeners('lb-pong');
         clearInterval(heartbeater);
       }
     }, 15000);

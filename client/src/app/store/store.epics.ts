@@ -19,6 +19,7 @@ export class RootEpics {
       this.authEpics.success,
       this.resumeEpics.getResumes,
       this.resumeEpics.update,
+      this.resumeEpics.delete
     ))];
   }
 }

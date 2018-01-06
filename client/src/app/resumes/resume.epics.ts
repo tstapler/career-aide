@@ -41,6 +41,20 @@ export class ResumeEpics {
       });
   }
 
+  public delete = (action$) => {
+    return action$.ofType(ResumeActions.DELETE)
+      .mergeMap(({ payload }) => {
+        return this.resumeApi.deleteById(payload)
+          .map((result) => ({
+            type: ResumeActions.DELETE_SUCCESS,
+            payload,
+          }))
+          .catch((error) => Observable.of({
+            type: ResumeActions.DELETE_FAILURE,
+          }));
+      });
+  }
+
   public update = (action$) => {
     return action$.ofType(ResumeActions.SET)
       .mergeMap(({ payload }) => {

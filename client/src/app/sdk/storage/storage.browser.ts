@@ -29,7 +29,7 @@ export class StorageBrowser {
    * @description
    * The setter will return any type of data persisted in localStorage.
    **/
-  set(key: string, value: any): void {
+  set(key: string, value: any, expires?: Date): void {
     localStorage.setItem(
       key,
       typeof value === 'object' ? JSON.stringify(value) : value
@@ -59,9 +59,9 @@ export class StorageBrowser {
    **/
   private parse(value: any) {
     try {
-      return JSON.parse(value);
+        return JSON.parse(value);
     } catch (e) {
-      return value;
+        return value;
     }
   }
 }

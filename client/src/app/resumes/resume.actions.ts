@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
+
 import { IAppState } from '../store';
+import { ResumeInterface } from './../sdk/models/Resume';
 
 @Injectable()
 export class ResumeActions {
@@ -19,6 +21,12 @@ export class ResumeActions {
   public static readonly SET_FAILURE: string = 'SET_FAILURE';
 
   public static readonly CURRENT: string = 'CURRENT';
+  public static readonly TOGGLE_CREATING: string = 'TOGGLE_CREATING';
+  public static readonly START_NEW: string = 'START_NEW';
+
+  public static readonly DELETE: string = 'DELETE';
+  public static readonly DELETE_SUCCESS: string = 'DELETE_SUCCESS';
+  public static readonly DELETE_FAILURE: string = 'DELETE_FAILURE';
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
@@ -33,7 +41,7 @@ export class ResumeActions {
 
   public updateResume(
     username: string, userId: string,
-    resumename: string, resume: {},
+    resumename: string, resume: ResumeInterface,
     resumeId: string) {
     this.ngRedux.dispatch({
       type: ResumeActions.SET,
@@ -44,6 +52,33 @@ export class ResumeActions {
         resumename,
         resume
       }
+    });
+  }
+
+  public createResume(
+    username: string, userId: string,
+    resumename: string
+  ) {
+    this.ngRedux.dispatch({
+      type: ResumeActions.SET,
+      payload: {
+        username,
+        userId,
+        resumename
+      }
+    });
+  }
+
+  public deleteCurrentResume(resume) {
+    this.ngRedux.dispatch({
+      type: ResumeActions.DELETE,
+      payload: resume
+    });
+  }
+
+  public toggleCreatingResume() {
+    this.ngRedux.dispatch({
+      type: ResumeActions.TOGGLE_CREATING
     });
   }
 

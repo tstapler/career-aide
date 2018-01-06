@@ -1,11 +1,13 @@
+/* tslint:disable */
+import 'rxjs/add/operator/share';
 import { Injectable, Inject } from '@angular/core';
 import { IO } from './io.service';
 import { LoopBackAuth } from './auth.service';
-import { LoopBackConfig } from '../../lb.config';
 import { FireLoop } from '../../models/FireLoop';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { SDKModels } from '../custom/SDKModels';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 /**
@@ -81,8 +83,8 @@ export class RealTime {
         this.onReadySubject.next('shared-connection');
         clearTimeout(to);
       });
-      // Else if there is a current attempt of connection we wait for the prior
-      // process that started the connection flow.
+    // Else if there is a current attempt of connection we wait for the prior
+    // process that started the connection flow.
     } else if (this.connecting) {
       let ti = setInterval(() => {
         if (this.connection.isConnected()) {
@@ -90,14 +92,14 @@ export class RealTime {
           clearInterval(ti);
         }
       }, 500);
-      // If there is not valid connection or attempt, then we start the connection flow
-      // and make sure we notify all the onReady subscribers when done.
-      // Also it will listen for desconnections so we unsubscribe and avoid both:
-      // Memory leaks and duplicated triggered events.
+    // If there is not valid connection or attempt, then we start the connection flow
+    // and make sure we notify all the onReady subscribers when done.
+    // Also it will listen for desconnections so we unsubscribe and avoid both:
+    // Memory leaks and duplicated triggered events.
     } else {
       this.connecting = true;
       this.connection.connect(this.auth.getToken());
-      this.IO = new IO(this.connection);
+      this.IO       = new IO(this.connection);
       this.FireLoop = new FireLoop(this.connection, this.models);
       // Fire event for those subscribed 
       let s1: Subscription = this.connection.sharedObservables.sharedOnConnect.subscribe(() => {
