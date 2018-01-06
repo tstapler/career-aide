@@ -11,7 +11,7 @@
   "homepage": "https://github.com/angularclass/angular2-webpack-starter",
   "license": "MIT",
   "scripts": {
-    "build:sdk": "lb-sdk ../server/server.js ./src/app/sdk/ -d ng2web",
+    "build:sdk": "lb-sdk ../server/server.js ./src/app/sdk/ -d ng2web -n orm",
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
@@ -167,9 +167,9 @@
     "typedoc": "^0.5.3",
     "typescript": "^2.4.2",
     "url-loader": "^0.5.7",
-    "webpack": "2.3.1",
+    "webpack": "^2.3.1",
     "webpack-dev-middleware": "^1.10.0",
-    "webpack-dev-server": "2.4.1",
+    "webpack-dev-server": "^2.4.1",
     "webpack-dll-bundles-plugin": "^1.0.0-beta.5",
     "webpack-merge": "~3.0.0"
   },

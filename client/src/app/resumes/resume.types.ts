@@ -1,7 +1,7 @@
 import { ResumeInterface } from '../sdk/models/Resume';
 
 export interface IResume {
-  loaded: {};
+  loaded: { [id: string]: ResumeInterface };
   current: string;
   creating_new: boolean;
 };
