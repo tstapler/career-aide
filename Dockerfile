@@ -1,21 +1,32 @@
-FROM edvisor/nginx-node
+FROM node:9-stretch
 
-#Copy src files to docker container
-COPY . /usr/src/app
 
-#Install wkhtmltopdf which hackmyresume depends on
+#Install weasyprint which hackmyresume depends on
 RUN apt-get update && apt-get install -y \
-            wkhtmltopdf
+  build-essential \
+  python3-dev \
+  python3-pip \
+  python3-cffi \
+  libcairo2 \
+  libpango-1.0-0 \
+  libpangocairo-1.0-0 \
+  libgdk-pixbuf2.0-0 \
+  libffi-dev \
+  shared-mime-info \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g typescript rimraf webpack  forever phantomjs-prebuilt hackmyresume
+ RUN pip3 install WeasyPrint
 
-WORKDIR /usr/src/app/client
-RUN npm install
-RUN npm run build:prod
 
-WORKDIR /usr/src/app
-COPY default.conf /etc/nginx/conf.d/
-RUN npm install
-RUN mv -f server/prod.config.json server/config.json
-RUN mv -f server/prod.datasources.json server/datasources.json
-ENTRYPOINT ["/usr/src/app/start_container.sh"]
+RUN mkdir -p /app
+
+COPY ./package.json /app/package.json
+RUN cd /app && npm install
+
+#Copy server files to docker container
+COPY ./server /app/server
+COPY ./common /app/common
+
+WORKDIR /app
+
+ENTRYPOINT ["node", "server/server.js"]
