@@ -12,6 +12,10 @@
     "resumename": {
       "type": "string",
       "required": true
+    },
+    "data": {
+	    "type": "object",
+	    "required": true
     }
   },
   "validations": [],

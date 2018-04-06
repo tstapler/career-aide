@@ -1,8 +1,14 @@
 version: '2'
 services:
+  backend:
+    build: .
+    volumes:
+     - ./generated-files:/app/generated-files
+    ports:
+     - "3030:3030"
   mongo:
     image: "mongo"
-    ports: 
+    ports:
       - "27017:27017"
     volumes:
       - ./db:/data/db

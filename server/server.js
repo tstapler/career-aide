@@ -6,6 +6,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 require('shelljs/global');
 
+const {supportedThemes} = require('../common/themes')
+
 var app = module.exports = loopback();
 
 app.set('view engine', 'ejs');
@@ -33,6 +35,10 @@ app.start = function() {
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {
   if (err) throw err;
+
+  app.use('/api/v1/themes', function(req, res, next) {
+    res.json({ names: supportedThemes });
+  });
 
   // start the server if `$ node server.js`
   if (require.main === module)
