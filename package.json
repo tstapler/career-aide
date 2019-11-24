@@ -24,7 +24,7 @@
     "jsonresume-theme-paper": "^0.3.3",
     "jsonresume-theme-printclassy": "^1.1.1",
     "jsonresume-theme-smart": "^1.0.2",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.13",
     "loopback": "^3.0.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^4.0.0",
