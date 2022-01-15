@@ -31,7 +31,7 @@
     "loopback-connector-mongodb": "^1.18.1",
     "require-grep": "^0.0.5",
     "serve-favicon": "^2.0.1",
-    "shelljs": "^0.7.6",
+    "shelljs": "^0.8.5",
     "strong-error-handler": "^1.0.1"
   },
   "devDependencies": {
